@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumpy Cat — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for Jumpy Cat: Endless Jump — what data we collect and how it is used." />
+  <link rel="icon" href="Jumpy Cat Screenshots/Flavicon.png" />
+  <style>
+    /* ========== KAWAII DESIGN SYSTEM ========== */
+    :root {
+      --bg: #2d2950;
+      --bg-dark: #252342;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #f7f1ff;
+      --muted: #c8bfdc;
+      --pink: #ff78c8;
+      --mint: #7edbb8;
+      --yellow: #f6e27a;
+      --lavender: #c8b8e8;
+      --max: 900px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ========== SPARKLE BACKGROUND ========== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 120, 200, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(126, 219, 184, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(246, 226, 122, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sparkle-field {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+    .sparkle.star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .twinkle {
+      position: fixed;
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--yellow);
+      animation: twinkle 2s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.3); }
+    }
+
+    /* ========== STICKY HEADER ========== */
+    .sticky-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(37, 35, 66, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 120, 200, 0.15);
+    }
+    .sticky-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--pink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .sticky-header .logo:hover { text-decoration: none; }
+    .sticky-header .logo img { height: 28px; width: 28px; border-radius: 6px; object-fit: cover; }
+    .sticky-header nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+    .sticky-header nav a {
+      color: var(--muted);
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .sticky-header nav a:hover { color: var(--pink); text-decoration: none; }
+    .sticky-header nav a.active { color: var(--pink); }
+
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--pink);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ========== BUTTONS ========== */
+    .btn-download {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink), #ff4da6);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(255, 120, 200, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-download:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 120, 200, 0.5);
+      text-decoration: none;
+    }
+    .btn-download-sm {
+      padding: 8px 20px;
+      font-size: 0.85rem;
+    }
+    .sticky-header nav a.btn-download-sm { color: var(--bg); }
+    .sticky-header nav a.btn-download-sm:hover { color: var(--bg); }
+
+    /* ========== PAGE CONTENT ========== */
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 80px 0 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .page-header img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      border-radius: 28px;
+      box-shadow: 0 8px 40px rgba(255, 120, 200, 0.4), 0 0 60px rgba(255, 120, 200, 0.2);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 120, 200, 0.2);
+      background: rgba(255, 120, 200, 0.08);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pink);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: rgba(37, 35, 66, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 120, 200, 0.2);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 22px;
+      color: var(--pink);
+    }
+    h2:first-child { margin-top: 0; }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    ul {
+      margin: 0 0 14px 20px;
+      color: var(--muted);
+    }
+    li { margin-bottom: 8px; }
+
+    /* ========== DIVIDER ========== */
+    .paw-divider {
+      width: 80px;
+      height: 2px;
+      margin: 12px auto;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+      opacity: 0.4;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid rgba(200, 184, 232, 0.15);
+      padding: 32px 24px;
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-logo {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-links a {
+      color: var(--muted);
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--pink); text-decoration: none; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 640px) {
+      footer { flex-direction: column; text-align: center; }
+      .sticky-header .logo { font-size: 0.85rem; }
+      .sticky-header .logo img { height: 24px; width: 24px; }
+      .page-header img { width: 90px; height: 90px; border-radius: 22px; }
+      h1 { font-size: clamp(24px, 5vw, 36px); }
+      h2 { font-size: 18px; }
+      p, ul { font-size: 14px; }
+      .card { padding: 20px 16px; }
+      .btn-download { font-size: 0.9rem; padding: 12px 28px; }
+      .hamburger { display: block; }
+      .sticky-header nav {
+        position: fixed;
+        top: 0; right: 0;
+        width: 220px;
+        height: 100vh;
+        background: rgba(37, 35, 66, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 72px 28px 28px;
+        gap: 20px;
+        font-size: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        border-left: 1px solid rgba(255, 120, 200, 0.15);
+      }
+      .sticky-header nav.open { transform: translateX(0); }
+      .sticky-header nav .btn-download-sm {
+        margin-top: 12px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SPARKLE PARTICLES ===== -->
+  <div class="sparkle-field" id="sparkleField"></div>
+  <div class="twinkle" style="top:15%;left:10%;animation-delay:0.2s;"></div>
+  <div class="twinkle" style="top:28%;left:82%;animation-delay:1.0s;"></div>
+  <div class="twinkle" style="top:55%;left:18%;animation-delay:0.5s;"></div>
+  <div class="twinkle" style="top:72%;left:88%;animation-delay:1.5s;"></div>
+  <div class="twinkle" style="top:90%;left:50%;animation-delay:2.0s;"></div>
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="sticky-header">
+    <a href="marketing.html" class="logo">
+      <img src="Jumpy Cat Screenshots/JumpyCat Universal AppIcon.png" alt="Jumpy Cat" />
+      Jumpy Cat: Endless Jump
+    </a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="navMenu">
+      <a href="marketing.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html" class="active">Privacy</a>
+      <a href="https://apps.apple.com/app/jumpy-cat-endless-jump/id6746264027" class="btn-download btn-download-sm">Download</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-header">
+      <img src="Jumpy Cat Screenshots/JumpyCat Universal AppIcon.png" alt="Jumpy Cat" />
+      <h1>Privacy Policy</h1>
+    </div>
+
+    <section class="card">
+      <p>Last updated: March 26, 2026</p>
+
+      <h2>Overview</h2>
+      <p>Jumpy Cat ("the App") is a casual mobile game developed by Theressa Asis | TA Studio. We respect your privacy and are committed to being transparent about the limited data we collect.</p>
+
+      <h2>Data We Collect</h2>
+      <p>The App collects the following data solely for gameplay functionality:</p>
+      <ul>
+        <li><strong>Game Center Display Name</strong> — Used to identify you on the leaderboard. This is provided by Apple Game Center and is not collected by us directly.</li>
+        <li><strong>Game Center Player ID</strong> — Used to associate your scores with your account.</li>
+        <li><strong>High Scores</strong> — Your scores are submitted to our leaderboard so you can compete with other players.</li>
+        <li><strong>Player Name (optional)</strong> — If you enter a name for the leaderboard, it is stored alongside your score.</li>
+      </ul>
+
+      <h2>Data We Do Not Collect</h2>
+      <ul>
+        <li>We do not collect your email, phone number, location, or device identifiers.</li>
+        <li>We do not use analytics, advertising, or tracking SDKs.</li>
+        <li>We do not sell, share, or rent your data to any third party.</li>
+      </ul>
+    </section>
+
+    <div class="paw-divider"></div>
+
+    <section class="card">
+      <h2>Third-Party Services</h2>
+      <ul>
+        <li><strong>Apple Game Center</strong> — Used for authentication and leaderboards. Governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+        <li><strong>Google Firebase (Firestore)</strong> — Used to store leaderboard scores. Governed by <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a>.</li>
+        <li><strong>Apple StoreKit</strong> — Used for in-app purchases. All payment processing is handled entirely by Apple. We do not receive or store any payment information.</li>
+      </ul>
+
+      <h2>In-App Purchases</h2>
+      <p>The App offers optional in-app purchases (tuna packs and the Double Tuna upgrade). All transactions are processed by Apple. We do not have access to your payment details, credit card information, or Apple ID.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>The App does not knowingly collect personal information from children under 13. The only data collected (Game Center name and scores) is managed through Apple's parental controls.</p>
+    </section>
+
+    <div class="paw-divider"></div>
+
+    <section class="card">
+      <h2>Data Retention</h2>
+      <p>Leaderboard data is retained on our servers as an all-time classic leaderboard. You can request deletion of your data by contacting us.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Changes will be reflected on this page with an updated date.</p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this privacy policy, contact us at:<br>
+      <a href="mailto:hello@theressaasis.com">hello@theressaasis.com</a></p>
+
+      <p style="font-size: 14px; color: var(--muted); margin-top: 18px;">Last updated: March 2026</p>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">Jumpy Cat: Endless Jump</div>
+    <div class="footer-links">
+      <span>&copy; 2026 Theressa Asis</span>
+      <a href="support.html">Support</a>
+      <a href="https://apps.apple.com/app/jumpy-cat-endless-jump/id6746264027">App Store</a>
+    </div>
+  </footer>
+
+  <script>
+    // Sparkle Particles
+    (function() {
+      const field = document.getElementById('sparkleField');
+      const colors = ['#ff78c8', '#7edbb8', '#f6e27a', '#c8b8e8'];
+      for (let i = 0; i < 15; i++) {
+        const s = document.createElement('div');
+        s.className = 'sparkle' + (Math.random() > 0.5 ? ' star' : '');
+        const size = 4 + Math.random() * 8;
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.background = colors[Math.floor(Math.random() * colors.length)];
+        s.style.animationDuration = (8 + Math.random() * 12) + 's';
+        s.style.animationDelay = (Math.random() * 10) + 's';
+        field.appendChild(s);
+      }
+    })();
+
+    // --- Hamburger Menu ---
+    (function() {
+      const btn = document.getElementById('hamburgerBtn');
+      const nav = document.getElementById('navMenu');
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('open');
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          btn.classList.remove('open');
+          nav.classList.remove('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Claude Code local config
+.claude/
+
+# App Store text
+Jumpy Cat Screenshots/Jumpy Cat Endless Jump - Text for App Store.rtf
